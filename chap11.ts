@@ -72,10 +72,12 @@ console.log(getFirstElement([])); // undefined
 // 매개변수, 리턴타입 정의 필요
 function isNumberArray<T>(array: T[]): boolean {
   // 여기에 구현
-  console.log('typeof array : ', typeof array);
-  if (typeof array[0] === 'number' || array.length == 0) {
-    return true;
-  } else return false;
+  for (let i = 0; i < array.length; i++) {
+    if (typeof array[i] !== 'number') {
+      return false;
+    }
+  }
+  return true;
 }
 
 // 테스트 코드
