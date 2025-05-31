@@ -1,10 +1,11 @@
+"use strict";
 // 제네릭 활용
-var Movie1 = { title: '기생충', genre: '액션' };
-var Movie2 = { rate: 4 };
-var pair = {
+const Movie1 = { title: '기생충', genre: '액션' };
+const Movie2 = { rate: 4 };
+const pair = {
     first: 'noona',
     second: 2,
-    display: function () {
+    display() {
         console.log(this.first + '는 ' + this.second + '살');
     },
 };
@@ -35,12 +36,12 @@ console.log(getFirstElement([])); // undefined
 // 매개변수, 리턴타입 정의 필요
 function isNumberArray(array) {
     // 여기에 구현
-    console.log('typeof array : ', typeof array);
-    if (typeof array[0] === 'number' || array.length == 0) {
-        return true;
+    for (let i = 0; i < array.length; i++) {
+        if (typeof array[i] !== 'number') {
+            return false;
+        }
     }
-    else
-        return false;
+    return true;
 }
 // 테스트 코드
 console.log(isNumberArray([1, 2, 3])); // true
@@ -79,12 +80,12 @@ console.log(checkArrayType({ key: 'value' })); // "This is not an array."
 //   // 여기에 구현
 //   return {[key] : value} as {[P in K] : V};
 // }
-// function createObject<K, V>(key: K, value: V): { [P in K]: V } {
-//   return { [key]: value } as { [P in K]: V };
-// }
-// // 테스트 코드
-// console.log(createObject("id", 123)); // { id: 123 }
-// console.log(createObject("name", "Alice")); // { name: "Alice" }
+function createObject(key, value) {
+    return { [key]: value };
+}
+// 테스트 코드
+console.log(createObject('id', 123)); // { id: 123 }
+console.log(createObject('name', 'Alice')); // { name: "Alice" }
 // 6. 사용자 정보를 나타내는 객체 배열에서 특정 속성만 추출하는 함수를 작성하세요.
 /*
 함수 이름: pluck
@@ -97,10 +98,10 @@ console.log(checkArrayType({ key: 'value' })); // "This is not an array."
 // 매개변수, 리턴 타입 정의 필요
 // k가 T 내부에 있다는 제한 조건이 필요한기 때문에 K extends keyof T
 function pluck(array, key) {
-    return array.map(function (item) { return item[key]; });
+    return array.map((item) => item[key]);
 }
 // 테스트 코드
-var users = [
+const users = [
     { id: 1, name: 'Alice' },
     { id: 2, name: 'Bob' },
 ];

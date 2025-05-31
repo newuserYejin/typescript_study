@@ -109,16 +109,32 @@ console.log(getValue(user15, 'email')); // 기대 출력: "alice@example.com"
   출력: 데이터 처리 결과 (단순히 "Processed: [data]" 형태로 반환).
  */
 
-//   type RequestData<T> = /* 여기에 작성 */;
+type RequestData<T> = T extends 'text'
+  ? string
+  : T extends 'json'
+  ? Record<string, any>
+  : T extends 'binary'
+  ? Uint8Array
+  : never;
 
-// function processRequest<T extends "text" | "json" | "binary">(
-//   type: T,
-//   data: RequestData<T>
-// ): string {
-//   // 여기에 구현
-// }
+function processRequest<T extends 'text' | 'json' | 'binary'>(
+  type: T,
+  data: RequestData<T>
+): string {
+  // 여기에 구현
+  switch (type) {
+    case 'text':
+      return `Processed: ${data}`;
+    case 'json':
+      return `Processed: ${JSON.stringify(data)}`;
+    case 'binary':
+      return `Processed: ${(data as Uint8Array).join(',')}`;
+    default:
+      throw new Error('에러 발생');
+  }
+}
 
-// // 테스트 코드
-// console.log(processRequest("text", "Hello")); // "Processed: Hello"
-// console.log(processRequest("json", { key: "value" })); // "Processed: [object Object]"
-// console.log(processRequest("binary", new Uint8Array([72, 101, 108, 108, 111]))); // "Processed: 72,101,108,108,111"
+// 테스트 코드
+console.log(processRequest('text', 'Hello')); // "Processed: Hello"
+console.log(processRequest('json', { key: 'value' })); // "Processed: [object Object]"
+console.log(processRequest('binary', new Uint8Array([72, 101, 108, 108, 111]))); // "Processed: 72,101,108,108,111"

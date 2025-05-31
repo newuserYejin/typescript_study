@@ -1,5 +1,6 @@
+"use strict";
 // any : 모든 타입 (js의기본 타입)
-var an = 'noona';
+let an = 'noona';
 // unknown : 선언은 가능하지만 타입이 확정되지 않은걸 확인해준다.
 // void : 함수의 리턴 값이 없을때
 // never : 리턴 타입이 있을 수가 없음

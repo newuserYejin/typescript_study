@@ -1,3 +1,4 @@
+"use strict";
 /*
 string
 number
@@ -6,18 +7,7 @@ null, undefined   <- 타입으로 인식
 symbol <- 절대 변경 불가한 값
 bigint <- int 로 다루기 어려운 큰 숫자
 */
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-var a = 3;
+let a = 3;
 a = 32.2;
 // a = "asd" -> number 타입에 string을 넣을 수 없기 때문에 오류
 function fu(n) {
@@ -25,21 +15,21 @@ function fu(n) {
 }
 console.log(fu(4));
 // 문제 1번
-var userName; // 예: 이름
-var userAge; // 예: 나이
-var isAdmin; // 예: 관리자 여부
+let userName; // 예: 이름
+let userAge; // 예: 나이
+let isAdmin; // 예: 관리자 여부
 userName = 'Alice';
 userAge = 25;
 isAdmin = true;
 // 문제 2번 변수 선언과 초기값 지정
-var productName = '예에'; // 상품 이름
-var productPrice; // 상품 가격
+let productName = '예에'; // 상품 이름
+let productPrice; // 상품 가격
 productPrice = 2000;
-var isAvailable = true; // 상품 재고 여부
+let isAvailable = true; // 상품 재고 여부
 // 예시 출력
-console.log("\uC0C1\uD488\uBA85: ".concat(productName, ", \uAC00\uACA9: ").concat(productPrice, ", \uC7AC\uACE0 \uC5EC\uBD80: ").concat(isAvailable));
+console.log(`상품명: ${productName}, 가격: ${productPrice}, 재고 여부: ${isAvailable}`);
 // 문제 3번
-var addNumbers = function (a, b) {
+const addNumbers = (a, b) => {
     return a + b;
 };
 console.log(addNumbers(5, 3));
@@ -86,7 +76,7 @@ console.log(isPrimitive(undefined)); // true
 console.log(isPrimitive({})); // false
 console.log(isPrimitive([])); // false
 // 2강
-var products = [
+const products = [
     ['Laptop', 1000, true],
     ['Shoes', 50, false],
     ['Book', 20, true],
@@ -94,12 +84,12 @@ var products = [
 // 1. 상품 이름과 가격만 반환,리턴타입 정의필요
 function getProductNamesAndPrices(products) {
     // 여기에 구현
-    return products.map(function (item) { return [item[0], item[1]]; });
+    return products.map((item) => [item[0], item[1]]);
 }
 // 2. 재고가 있는 상품만 반환,리턴타입 정의필요
 function getAvailableProducts(products) {
     // 여기에 구현
-    return products.filter(function (item) { return item[2] === true; });
+    return products.filter((item) => item[2] === true);
 }
 // 테스트 코드
 console.log(getProductNamesAndPrices(products));
@@ -109,14 +99,14 @@ console.log(getAvailableProducts(products));
 //매개변수, 리턴 타입 정의 필요
 function updateUser(user) {
     // 나이가 제공되지 않으면 18로 설정
-    var result = __assign(__assign({}, user), { age: user.age ? user.age : 18 });
+    const result = Object.assign(Object.assign({}, user), { age: user.age ? user.age : 18 });
     return result;
 }
 // 테스트 코드
 console.log(updateUser({ name: 'Charlie' })); // { name: "Charlie", age: 18 }
 console.log(updateUser({ name: 'Dana', age: 25 })); // { name: "Dana", age: 25 }
 // proudcts 타입정의  필요
-var productsList = [
+const productsList = [
     { name: 'Laptop', price: 1000, category: 'Electronics' },
     { name: 'Shoes', price: 50, category: 'Fashion' },
     { name: 'Book', price: 20 },
@@ -125,14 +115,8 @@ var productsList = [
 function getProductsByCategory(bookCategory) {
     // 여기에 구현
     return productsList
-        .filter(function (_a) {
-        var name = _a.name, price = _a.price, category = _a.category;
-        return category === bookCategory;
-    })
-        .map(function (_a) {
-        var name = _a.name, price = _a.price, category = _a.category;
-        return name;
-    });
+        .filter(({ name, price, category }) => category === bookCategory)
+        .map(({ name, price, category }) => name);
 }
 // 테스트 코드
 console.log(getProductsByCategory('Electronics')); // ["Laptop"]

@@ -1,6 +1,7 @@
-var direction;
+"use strict";
+let direction;
 direction = 'left';
-var margin;
+let margin;
 margin = 'margin-left';
 // 1번. 웹 애플리케이션에서 사용할 버튼의 스타일을 선택하는 함수를 작성하세요.
 /*
@@ -16,7 +17,7 @@ margin = 'margin-left';
 */
 function getButtonClass(style) {
     // 여기에 구현
-    return "btn-".concat(style);
+    return `btn-${style}`;
 }
 // 테스트 코드
 console.log(getButtonClass('primary')); // "btn-primary"

@@ -1,3 +1,4 @@
+"use strict";
 // enum 타입
 // 특정 값을 타입으로 지정할때 쓰는게 enum
 var Gender;
@@ -5,7 +6,7 @@ var Gender;
     Gender["FEMALE"] = "Female";
     Gender["MALE"] = "Male";
 })(Gender || (Gender = {}));
-var gender = Gender.FEMALE;
+let gender = Gender.FEMALE;
 // const enum과 enum의 차이
 /*
 원초의 enum은 ts에서만 존재하는개념으로 js에는 존재하지 않는다.
@@ -145,7 +146,7 @@ var LogLevel;
     LogLevel["Debug"] = "Debug";
 })(LogLevel || (LogLevel = {}));
 // 로그 함수 구현
-var logMessage = function (message, level) {
+const logMessage = (message, level) => {
     // 여기에 구현
     switch (level) {
         case LogLevel.Info:

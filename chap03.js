@@ -1,18 +1,19 @@
-var b = { name: 'nooona' };
-var c = { name: 'nooona', age: 23 };
-var d = { name: 'ho', isStudent: false };
-var e = { name: 'ho', isStudent: false };
-var user = {
+"use strict";
+let b = { name: 'nooona' };
+let c = { name: 'nooona', age: 23 };
+let d = { name: 'ho', isStudent: false };
+let e = { name: 'ho', isStudent: false };
+const user = {
     id: 1,
     name: 'Alice',
 };
-var userWithEmail = {
+const userWithEmail = {
     id: 2,
     name: 'Bob',
     email: 'bob@example.com',
 };
 // User 타입을 사용하여 아래 객체를 작성하세요.
-var user2 = {
+const user2 = {
     id: 1,
     name: 'Alice',
     address: {
@@ -20,29 +21,29 @@ var user2 = {
         zipCode: 12345,
     },
 };
-var normalUser = {
+const normalUser = {
     id: 1,
     name: 'Alice',
     email: 'alice@example.com',
 };
-var adminUser = {
+const adminUser = {
     id: 2,
     name: 'Bob',
     role: 'Administrator',
 };
-var normalProduct = {
+const normalProduct = {
     id: 1,
     name: 'Laptop',
     price: 1000,
 };
-var discountedProduct = {
+const discountedProduct = {
     id: 2,
     name: 'Smartphone',
     price: 800,
     discount: 10,
 };
 // Order 타입을 사용하여 아래 객체를 작성하세요.
-var order = {
+const order = {
     orderId: 101,
     products: [
         { id: 1, name: 'Laptop', price: 1000 },
@@ -51,12 +52,12 @@ var order = {
     totalPrice: 1050,
 };
 // 아래 객체를 작성하세요.
-var admin = {
+const admin = {
     id: 1,
     name: 'Alice',
     role: 'Administrator',
 };
-var guest = {
+const guest = {
     id: 2,
     name: 'Bob',
     visitCount: 5,

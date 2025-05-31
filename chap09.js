@@ -1,3 +1,4 @@
+"use strict";
 // 유니온 타입의 단점 : 타입이 섞여들어가도  error가 발생하지 않는다.
 // const result4: Track4 | Artist4 = {
 //   title: 'hey',
@@ -5,7 +6,7 @@
 //   name: '누나',
 //   debutDate: '2026',
 // };
-var result4 = {
+const result4 = {
     type: 'track',
     title: 'hey',
     releaseDate: '2025',
@@ -31,7 +32,7 @@ function processInput(input) {
     // 여기에 작성
     if (Array.isArray(input)) {
         if (typeof input[0] === 'number') {
-            return input.reduce(function (total, num) { return total + num; }, 0);
+            return input.reduce((total, num) => total + num, 0);
         }
         else if (typeof input[0] === 'string') {
             return input.join('');
@@ -61,18 +62,16 @@ console.log(processInput({ message: 'TypeScript' })); // "TYPESCRIPT"
   Bike이면 바이크 종류 앞에 "Bike: "를 추가하여 반환합니다.
 */
 // 클래스 정의
-var Car = /** @class */ (function () {
-    function Car(brand) {
+class Car {
+    constructor(brand) {
         this.brand = brand;
     }
-    return Car;
-}());
-var Bike = /** @class */ (function () {
-    function Bike(type) {
+}
+class Bike {
+    constructor(type) {
         this.type = type;
     }
-    return Bike;
-}());
+}
 // 여기에 작성
 function processVehicle(vehicle) {
     // 여기에 구현
@@ -80,13 +79,13 @@ function processVehicle(vehicle) {
         return vehicle.brand.toUpperCase();
     }
     else if (vehicle instanceof Bike) {
-        return "Bike: ".concat(vehicle.type);
+        return `Bike: ${vehicle.type}`;
     }
     throw new Error('새로운 타입');
 }
 // 테스트 코드
-var myCar = new Car('Tesla');
-var myBike = new Bike('Mountain');
+const myCar = new Car('Tesla');
+const myBike = new Bike('Mountain');
 console.log(processVehicle(myCar)); // "TESLA"
 console.log(processVehicle(myBike)); // "Bike: Mountain"
 function processUser(user) {
@@ -111,7 +110,7 @@ function calculateArea(shape) {
         return shape.width * shape.height;
     }
     else {
-        return Math.PI * Math.pow(shape.radius, 2);
+        return Math.PI * shape.radius ** 2;
     }
 }
 // 테스트 코드
@@ -121,9 +120,9 @@ console.log(calculateArea({ radius: 7 })); // 153.93804002589985 (대략 π * 7�
 function calculateArea5(shape) {
     // 여기에 구현
     if (shape.type === 'square')
-        return Math.pow(shape.side, 2);
+        return shape.side ** 2;
     else if (shape.type === 'circle')
-        return Math.PI * Math.pow(shape.radius, 2);
+        return Math.PI * shape.radius ** 2;
     else {
         exhaustiveCheck5(shape);
         return 0;

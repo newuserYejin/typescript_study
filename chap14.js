@@ -1,30 +1,20 @@
+"use strict";
 // record 타입 : 무슨 타입이 올지 모를 때, 타입이 굉장히 동적일 때
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-var example = {
+const example = {
     apple: 3,
     orange: 1,
 };
-var fruit = {
+const fruit = {
     apple: 'red',
     orange: 'pop',
     // mango: 'toto',
 };
-var inventory = {
+const inventory = {
     apple: { id: '2', name: 'apple', price: 3000 },
     mango: { id: '4', name: 'mango', price: 1000 },
 };
 // 배송비 데이터 정의
-var shippingCosts = {
+const shippingCosts = {
     US: 10,
     EU: 15,
     ASIA: 20,
@@ -54,15 +44,15 @@ console.log(calculateShippingCost('AFRICA', shippingCosts)); // 25
   출력: 모든 학생의 평균 점수(number).
 */
 // 학생 점수 데이터 정의
-var scores = {
+const scores = {
     Alice: 85,
     Bob: 92,
     Charlie: 78,
 };
 // 평균 점수 계산 함수 작성
 function calculateAverageScore(scores) {
-    var total = Object.values(scores).reduce(function (sum, score) { return sum + score; }, 0);
-    var size = Object.keys(scores).length;
+    const total = Object.values(scores).reduce((sum, score) => sum + score, 0);
+    const size = Object.keys(scores).length;
     return total / size;
 }
 // 테스트 코드
@@ -81,14 +71,14 @@ console.log(calculateAverageScore(scores)); // 85
   출력: 업데이트된 제품 가격 데이터(Record<string, number>).
 */
 // 제품 가격 데이터 정의
-var prices = {
+const prices = {
     Laptop: 1000,
     Phone: 500,
     Tablet: 300,
 };
 // 가격 업데이트 함수 작성
 function updateProductPrice(prices, product, newPrice) {
-    return __assign(__assign({}, prices), { product: newPrice });
+    return Object.assign(Object.assign({}, prices), { product: newPrice });
 }
 // 테스트 코드
 console.log(updateProductPrice(prices, 'Phone', 550));
